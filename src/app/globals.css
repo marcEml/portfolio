@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Safari premium — chaud, élégant, naturel */
+
+  /* Texte / éléments très contrastés */
+  --brand-navy: 43 32 24;          /* #2B2018 — espresso */
+  --brand-navy-soft: 78 59 44;     /* #4E3B2C — brun chaud */
+
+  /* Accent principal */
+  --brand-blue: 158 111 66;        /* #9E6F42 — camel / cognac */
+  --brand-blue-soft: 239 225 207;  /* #EFE1CF — sable clair */
+
+  /* Fonds */
+  --brand-ivory: 248 242 234;      /* #F8F2EA — ivoire chaud */
+  --brand-surface: 255 251 246;     /* #FFFBF6 — crème */
+
+  /* Texte secondaire */
+  --brand-muted: 112 94 77;        /* #705E4D — taupe chaud */
+
+  /* Bordures */
+  --brand-border: 224 211 194;     /* #E0D3C2 — beige sable */
+
+  /* Couleurs principales */
+  --color-primary: #9e6f42;
+  --color-primary-light: #bd8b58;
+  --color-primary-dark: #6f4b2f;
+  --color-primary-xdark: #2b2018;
+
+  /* Accent secondaire facultatif */
+  --brand-olive: 105 103 67;       /* #696743 */
+}
+
+:root[data-theme="dark"] {
+  /* Safari nocturne */
+
+  --brand-navy: 248 239 226;        /* #F8EFE2 — texte principal */
+  --brand-navy-soft: 218 202 182;   /* #DACAB6 — texte secondaire */
+
+  --brand-blue: 211 162 105;        /* #D3A269 — camel lumineux */
+  --brand-blue-soft: 58 43 31;      /* #3A2B1F — brun accent */
+
+  --brand-ivory: 23 18 13;          /* #17120D — fond principal */
+  --brand-surface: 34 26 19;        /* #221A13 — cartes */
+
+  --brand-muted: 183 164 143;       /* #B7A48F */
+  --brand-border: 73 57 43;         /* #49392B */
+
+  --color-primary: #d3a269;
+  --color-primary-light: #e0b77f;
+  --color-primary-dark: #a87748;
+  --color-primary-xdark: #f8efe2;
+
+  --brand-olive: 145 143 91;        /* #918F5B */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--brand-ivory));
+  color: rgb(var(--brand-navy));
+  font-family: var(--font-lato), Arial, sans-serif;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-pt-serif), Georgia, serif;
+}
+
+::selection {
+  background: rgb(var(--brand-blue));
+  color: rgb(var(--brand-surface));
+}
+
+* {
+  box-sizing: border-box;
+}
