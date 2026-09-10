@@ -35,7 +35,7 @@ export function Freetime() {
   return (
     <EightBitTimeline
       id="freetime"
-      eyebrow={isFrench ? "06 — Loisirs et centres d’intérêt" : "06 — Interests"}
+      eyebrow={isFrench ? "07 — Loisirs et centres d’intérêt" : "07 — Interests"}
       title={isFrench ? "Ce qui nourrit ma curiosité." : "What fuels my curiosity."}
       description={isFrench ? "Trois univers qui entretiennent ma créativité, mon énergie et mon envie d’apprendre." : "Three worlds that nurture my creativity, energy and desire to learn."}
       steps={interests}

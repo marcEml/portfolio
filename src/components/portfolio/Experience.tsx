@@ -5,6 +5,13 @@ import { CheckCircle2, MapPin } from "lucide-react";
 import { SiOrange } from "react-icons/si";
 import { Timeline } from "@/components/ui/timeline";
 import { usePreferences } from "@/contexts/PreferencesContext";
+import { ImageGallery } from "../ui/ImageGallery";
+
+type CustomImage = {
+  src: string;
+  alt: string;
+  fallback: string;
+};
 
 function ExperienceCard({
   role,
@@ -14,7 +21,7 @@ function ExperienceCard({
   missions,
   technologies,
   logo,
-  photo,
+  photos,
 }: {
   role: string;
   company: string;
@@ -26,10 +33,7 @@ function ExperienceCard({
     src: string;
     alt: string;
   };
-  photo?: {
-    src: string;
-    alt: string;
-  };
+  photos?: CustomImage[];
 }) {
   const { language } = usePreferences();
   const isFrench = language === "fr";
@@ -104,11 +108,7 @@ function ExperienceCard({
         </ul>
       </div>
 
-      {photo && (
-        <span className="relative flex w-full shrink-0 items-center justify-center overflow-hidden border border-brand-border bg-white h-[400px]">
-          <Image src={photo.src} alt={photo.alt} fill sizes="400px" className="object-cover" />
-        </span>
-      )}
+      {photos && photos.length > 0 && <ImageGallery Images={photos!} />}
     </article>
   );
 }
@@ -211,12 +211,15 @@ export function Experience() {
           role={isFrench ? "Stage Développeur logiciel" : "Software Developer Internship"}
           company="Orange Digital Center"
           location={isFrench ? "Abidjan, Côte d’Ivoire" : "Abidjan, Ivory Coast"}
-          photo={{
-            src: "/assets/photos/137.png",
-            alt: isFrench
-              ? "Photo de la cérémonie de présentation des projets"
-              : "Logo of the Ivory Coast Ministry of Planning and Development",
-          }}
+          photos={[
+            {
+              src: "/assets/photos/137.png",
+              fallback: "",
+              alt: isFrench
+                ? "Photo de la cérémonie de présentation des projets"
+                : "Logo of the Ivory Coast Ministry of Planning and Development",
+            },
+          ]}
           context={
             isFrench
               ? "Conception d’un système connecté d’aide à la mobilité des personnes malvoyantes."
@@ -316,7 +319,27 @@ export function Experience() {
     <section id="experience" className="scroll-mt-6 bg-brand-ivory">
       <Timeline
         data={timelineData}
-        eyebrow={isFrench ? "05 — Expériences" : "05 — Experience"}
+        headerArtwork={
+          <div
+            aria-hidden="true"
+            className="oldart-experience-layer pointer-events-none absolute inset-x-0 top-0 z-0 h-[720px]"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 0%, black 38%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to bottom, black 0%, black 38%, transparent 100%)",
+            }}
+          >
+            <Image
+              src="/assets/oldart/133231.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
+        }
+        eyebrow={isFrench ? "06 — Expériences" : "06 — Experience"}
         heading={
           isFrench
             ? "Des expériences à la croisée du logiciel, du DevOps et des réseaux."

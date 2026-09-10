@@ -2,6 +2,7 @@
 
 import { StackingCards, type StackingCardItem } from "@/components/ui/StackingCard";
 import { usePreferences } from "@/contexts/PreferencesContext";
+import Image from "next/image";
 
 export function Certifications() {
   const { language } = usePreferences();
@@ -40,8 +41,27 @@ export function Certifications() {
   ];
 
   return (
-    <section id="certifications" className="scroll-mt-6 bg-brand-ivory pt-24 sm:pt-28 lg:pt-32">
-      <div className="mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
+    <section id="certifications" className="relative isolate scroll-mt-6 bg-brand-ivory pt-24 sm:pt-28 lg:pt-32">
+      <div
+        aria-hidden="true"
+        className="oldart-certification-figure pointer-events-none absolute right-0 top-5 z-0 h-[390px] w-[340px] sm:right-[2%] sm:h-[470px] sm:w-[410px] lg:right-[6%]"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 32%, black 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 32%, black 100%)",
+        }}
+      >
+        <Image
+          src="/assets/oldart/128771.png"
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 410px, 340px"
+          className="object-contain object-right-top"
+        />
+      </div>
+
+      <div className="relative z-[1] mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
         <p className="font-display text-xs font-semibold uppercase tracking-[0.24em] text-brand-blue">
           04 — Certifications
         </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUp, Github, Gitlab, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 import { socialLinks } from "@/config/portfolioLinks";
 import { usePreferences } from "@/contexts/PreferencesContext";
@@ -14,6 +15,7 @@ const navigation = [
   { id: "projects", fr: "Projets", en: "Projects" },
   { id: "experience", fr: "Expériences", en: "Experience" },
   { id: "freetime", fr: "Loisirs", en: "Interests" },
+  { id: "cv", fr: "CV", en: "Résumé" },
   { id: "contact", fr: "Contact", en: "Contact" },
 ] as const;
 
@@ -33,9 +35,23 @@ export function Footer() {
       className="relative scroll-mt-0 overflow-hidden border-t border-brand-border bg-brand-surface px-6 pb-20 pt-12 text-brand-navy sm:px-10 sm:pb-14 lg:px-16 lg:py-14"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[url('/assets/noise.jpg')] bg-cover bg-center opacity-[0.05] grayscale"
         aria-hidden="true"
-      />
+        className="oldart-footer-garden pointer-events-none absolute inset-x-0 bottom-0 h-[115%]"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 38%, black 100%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 38%, black 100%)",
+        }}
+      >
+        <Image
+          src="/assets/oldart/background-with-flowers-butterflies.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+      </div>
 
       <div className="relative mx-auto max-w-6xl">
         <div className="flex flex-col gap-9 sm:flex-row sm:items-center sm:justify-between">

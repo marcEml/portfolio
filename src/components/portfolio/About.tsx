@@ -1,6 +1,7 @@
 "use client";
 
 import { usePreferences } from "@/contexts/PreferencesContext";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar";
 
 export function About() {
   const { language } = usePreferences();
@@ -16,17 +17,34 @@ export function About() {
           {isFrench ? "À propos de moi" : "About me"}
         </h2>
 
-        <div className="space-y-6 text-lg leading-relaxed text-brand-muted">
-          <p className="text-justify">
-            {isFrench
-              ? "Étudiant ingénieur à l’IMT Atlantique, actuellement ingénieur DevOps chez Orange Innovation. Expertise en automatisation des pipelines CI/CD, conteneurisation (Docker, Kubernetes), Infrastructure as Code (Terraform, Ansible), observabilité (Prometheus, Grafana, ELK) et scripting (Python, Bash). Expérience dans la gestion de plateformes Kubernetes, l’industrialisation des déploiements et la supervision d’infrastructures cloud-native. Motivé par l’amélioration de la fiabilité et de la vélocité des déploiements logiciels."
-              : "Engineering student at IMT Atlantique and currently a DevOps engineer at Orange Innovation. Skilled in CI/CD pipeline automation, containerization (Docker, Kubernetes), Infrastructure as Code (Terraform, Ansible), observability (Prometheus, Grafana, ELK) and scripting (Python, Bash). Experienced in managing Kubernetes platforms, industrializing deployments and monitoring cloud-native infrastructure, with a strong focus on software delivery reliability and velocity."}
-          </p>
-          <p>
-            {isFrench
-              ? "Je suis à la recherche d’une opportunité en CDI dans les domaines du DevOps, de la cybersécurité et du NetOps. N’hésitez pas à me contacter si mon profil vous intéresse."
-              : "I am looking for a permanent position in DevOps, cybersecurity or NetOps. Feel free to contact me if my profile matches your needs."}
-          </p>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex justify-center py-3">
+            <Avatar className="h-32 w-32 ring-4 ring-brand-blue-soft">
+              <AvatarImage
+                className="object-cover"
+                src="/assets/pp.png"
+                alt={
+                  isFrench
+                    ? "Portrait de Yao Marc-Emmanuel Brou"
+                    : "Portrait of Yao Marc-Emmanuel Brou"
+                }
+              />
+              <AvatarFallback>MB</AvatarFallback>
+            </Avatar>
+          </div>
+
+          <div className="space-y-6 text-lg leading-relaxed text-brand-muted">
+            <p className="text-justify">
+              {isFrench
+                ? "Étudiant ingénieur à l’IMT Atlantique, actuellement ingénieur DevOps chez Orange Innovation. Expertise en automatisation des pipelines CI/CD, conteneurisation (Docker, Kubernetes), Infrastructure as Code (Terraform, Ansible), observabilité (Prometheus, Grafana, ELK) et scripting (Python, Bash). Expérience dans la gestion de plateformes Kubernetes, l’industrialisation des déploiements et la supervision d’infrastructures cloud-native. Motivé par l’amélioration de la fiabilité et de la vélocité des déploiements logiciels."
+                : "Engineering student at IMT Atlantique and currently a DevOps engineer at Orange Innovation. Skilled in CI/CD pipeline automation, containerization (Docker, Kubernetes), Infrastructure as Code (Terraform, Ansible), observability (Prometheus, Grafana, ELK) and scripting (Python, Bash). Experienced in managing Kubernetes platforms, industrializing deployments and monitoring cloud-native infrastructure, with a strong focus on software delivery reliability and velocity."}
+            </p>
+            <p>
+              {isFrench
+                ? "Je suis à la recherche d’une opportunité en CDI dans les domaines du DevOps, de la cybersécurité et du NetOps. N’hésitez pas à me contacter si mon profil vous intéresse."
+                : "I am looking for a permanent position in DevOps, cybersecurity or NetOps. Feel free to contact me if my profile matches your needs."}
+            </p>
+          </div>
         </div>
       </div>
     </section>

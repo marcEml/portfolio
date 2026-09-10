@@ -29,6 +29,19 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-brand-ivory/55" />
 
+        <div aria-hidden="true" className="oldart-flower-accent absolute -right-[10%] -bottom-[35%] z-[2] h-[66%] w-[48%] rotate-[7deg] sm:-right-[4%] lg:-right-[8%]">
+          {/* <Image
+            src="/assets/oldart/ranunculus-grayscale-with-risograph-effect-remixed-media.png"
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 26vw, 48vw"
+            className="object-contain object-top"
+          /> */}
+        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-3 z-[3] rounded-tr-[60px] border border-brand-blue/25 sm:inset-4 sm:rounded-tr-[80px] lg:rounded-tr-[94px]"
+        />
         <div
           aria-hidden="true"
           className="absolute left-[5%] top-1/2 z-0 flex -translate-y-1/2 flex-col font-display text-[clamp(12rem,32vw,30rem)] font-bold leading-[0.58] tracking-[-0.12em] text-brand-navy/[0.08]"
@@ -58,7 +71,20 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative min-h-[480px] bg-brand-surface px-7 py-14 sm:px-12 lg:flex lg:h-full lg:min-h-0 lg:items-center lg:px-[9%] lg:py-0">
+      <div className="relative min-h-[480px] overflow-hidden bg-brand-surface px-7 py-14 sm:px-12 lg:flex lg:h-full lg:min-h-0 lg:items-center lg:px-[9%] lg:py-0">
+        <div aria-hidden="true" className="oldart-statue-layer pointer-events-none absolute -right-[18%] inset-y-0 z-0 w-[88%] sm:-right-[8%] sm:w-[72%] lg:-right-[24%] lg:w-[96%]">
+          <Image
+            src="/assets/oldart/ranunculus-grayscale-with-risograph-effect-remixed-media.png"
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 44vw, 72vw"
+            className="object-cover object-[34%_center]"
+          />
+        </div>
+        <span
+          aria-hidden="true"
+          className="absolute left-0 top-[18%] z-0 h-px w-[22%] bg-[var(--art-gold)] opacity-[0.55]"
+        />
         <div className="relative z-10 mx-auto max-w-xl lg:mx-0 lg:translate-y-[12%]">
           <div className="text-base font-medium leading-relaxed text-brand-navy sm:text-lg lg:text-[clamp(1rem,1.12vw,1.22rem)]">
             <p>

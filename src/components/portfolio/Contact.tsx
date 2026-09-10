@@ -71,7 +71,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-6 bg-brand-surface px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <ContactCard
-          eyebrow="07 — Contact"
+          eyebrow="09 — Contact"
           title={isFrench ? "Une idée, un projet ou une opportunité ?" : "An idea, a project or an opportunity?"}
           description={isFrench ? "Décrivez-moi votre besoin avec quelques éléments de contexte. Le message sera envoyé directement dans ma boîte professionnelle." : "Tell me what you need and provide a little context. Your message will be sent directly to my professional inbox."}
           contactInfo={[

@@ -1,11 +1,7 @@
 "use client";
-import {
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
+import { useMotionValueEvent, useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 interface TimelineEntry {
   title: string;
@@ -15,11 +11,12 @@ interface TimelineEntry {
 interface TimelineProps {
   data: TimelineEntry[];
   eyebrow?: string;
+  headerArtwork?: React.ReactNode;
   heading: string;
   description?: string;
 }
 
-export const Timeline = ({ data, eyebrow, heading, description }: TimelineProps) => {
+export const Timeline = ({ data, eyebrow, headerArtwork, heading, description }: TimelineProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -40,11 +37,10 @@ export const Timeline = ({ data, eyebrow, heading, description }: TimelineProps)
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div
-      className="w-full bg-brand-surface font-sans md:px-6"
-      ref={containerRef}
-    >
-      <div className="max-w-6xl mx-auto px-6 pb-10 pt-24 sm:px-10 lg:px-12 lg:pb-16 lg:pt-32">
+    <div className="relative isolate w-full bg-brand-surface font-sans md:px-6 overflow-hidden" ref={containerRef}>
+      {headerArtwork}
+
+      <div className="relative z-[1] max-w-6xl mx-auto px-6 pb-10 pt-24 sm:px-10 lg:px-12 lg:pb-16 lg:pt-32">
         {eyebrow ? (
           <p className="font-display text-xs font-semibold uppercase tracking-[0.24em] text-brand-blue">
             {eyebrow}
@@ -60,7 +56,10 @@ export const Timeline = ({ data, eyebrow, heading, description }: TimelineProps)
         ) : null}
       </div>
 
-      <div ref={ref} className="relative max-w-6xl mx-auto px-6 pb-24 sm:px-10 lg:px-12 lg:pb-32">
+      <div
+        ref={ref}
+        className="relative z-[1] max-w-6xl mx-auto px-6 pb-24 sm:px-10 lg:px-12 lg:pb-32"
+      >
         {data.map((item, index) => (
           <div
             key={`${item.title}-${index}`}

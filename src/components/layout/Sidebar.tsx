@@ -12,7 +12,6 @@ import {
   House,
   Linkedin,
   Mail,
-  ShieldCheck,
   UserRound,
 } from "lucide-react";
 import { PreferenceControls } from "@/components/layout/PreferenceControls";
@@ -34,11 +33,13 @@ function SidebarLink({
   activeId,
   compact = false,
   onSelect,
+  onNavigate,
 }: {
   item: NavItem;
   activeId: string;
   compact?: boolean;
   onSelect: (id: string) => void;
+  onNavigate?: () => void;
 }) {
   const targetId = item.targetId ?? item.id;
   const isActive = activeId === targetId;
@@ -56,6 +57,7 @@ function SidebarLink({
         title={compact ? item.title : undefined}
         onClick={() => {
           if (!item.external) onSelect(targetId);
+          onNavigate?.();
         }}
         className={`group flex items-center transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue ${
           compact
@@ -72,7 +74,7 @@ function SidebarLink({
         />
         {compact ? null : (
           <span className="min-w-0 text-[13px] tracking-wide">
-              <span className="block truncate">{item.title}</span>
+            <span className="block truncate">{item.title}</span>
           </span>
         )}
       </a>
@@ -88,10 +90,14 @@ export function Sidebar({
   className = "",
   activeId,
   onSelect,
+  onNavigate,
+  showPreferences = true,
 }: {
   className?: string;
   activeId?: string;
   onSelect?: (id: string) => void;
+  onNavigate?: () => void;
+  showPreferences?: boolean;
 }) {
   const [internalId, setInternalId] = useState("home");
   const { language } = usePreferences();
@@ -107,6 +113,7 @@ export function Sidebar({
     { id: "projects", title: isFrench ? "Projets" : "Projects", icon: FolderKanban },
     { id: "experience", title: isFrench ? "Expériences" : "Experience", icon: BriefcaseBusiness },
     { id: "freetime", title: isFrench ? "Loisirs et centres d'intérêt" : "Interests", icon: Heart },
+    { id: "cv", title: isFrench ? "CV" : "Résumé", icon: FileText },
     { id: "contact", title: "Contact", icon: Mail },
   ];
   const shortcutItems: NavItem[] = [
@@ -119,29 +126,29 @@ export function Sidebar({
       href: socialLinks.linkedin,
       external: true,
     },
-    { id: "tryhackme", title: "TryHackMe", icon: ShieldCheck },
     {
       id: "contact-shortcut",
       targetId: "contact",
       title: isFrench ? "E-mail" : "Email",
       icon: Mail,
     },
-    { id: "cv", title: isFrench ? "CV" : "Résumé", icon: FileText },
   ];
 
   return (
     <div
       className={`flex h-screen w-full flex-col border-r border-brand-border bg-brand-surface p-3 font-sans ${className}`}
     >
-      <div className="mb-3">
-        <PreferenceControls />
-      </div>
+      {showPreferences ? (
+        <div className="mb-3">
+          <PreferenceControls />
+        </div>
+      ) : null}
 
       <div className="flex justify-center py-3">
         <Avatar className="h-32 w-32 ring-4 ring-brand-blue-soft">
           <AvatarImage
             className="object-cover"
-            src="/assets/pp.png"
+            src="/assets/video/ezgif-58712ab62cb743a4.gif"
             alt={
               isFrench ? "Portrait de Yao Marc-Emmanuel Brou" : "Portrait of Yao Marc-Emmanuel Brou"
             }
@@ -155,13 +162,19 @@ export function Sidebar({
         className="mt-3 flex flex-1 flex-col justify-center gap-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {navigationItems.map((item) => (
-          <SidebarLink key={item.id} item={item} activeId={currentId} onSelect={handleSelect} />
+          <SidebarLink
+            key={item.id}
+            item={item}
+            activeId={currentId}
+            onSelect={handleSelect}
+            onNavigate={onNavigate}
+          />
         ))}
       </nav>
 
       <nav
         aria-label={isFrench ? "Liens professionnels" : "Professional links"}
-        className="mt-auto grid grid-cols-3 gap-1 border-t border-brand-border pt-3"
+        className="mt-auto grid grid-cols-4 gap-1 border-t border-brand-border pt-3"
       >
         {shortcutItems.map((item) => (
           <SidebarLink
@@ -170,6 +183,7 @@ export function Sidebar({
             activeId={currentId}
             compact
             onSelect={handleSelect}
+            onNavigate={onNavigate}
           />
         ))}
       </nav>
